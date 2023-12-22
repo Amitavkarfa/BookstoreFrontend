@@ -1,0 +1,42 @@
+<div class="album py-5 ">
+  <div class="container">
+
+
+      <div class="row height d-flex justify-content-center align-items-center">
+
+        <div class="col-md-8">
+
+          <div class="search">
+            <input type="text" class="form-control" placeholder="Search by Book Title" [(ngModel)]='keyWord' >
+            <button class="btn btn-secondary" (click)="getBooksBySearchTerm()">Search</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col" *ngFor="let book of Books">
+        <div class="card shadow-sm">
+          <img src="../../assets/images/{{book.title}}.jpg" class="bd-placeholder-img card-img-top" width="50%" height="444" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <div class="card-body">
+            <h5 class="card-title">{{book.title}}</h5>
+             <h6 class="card-subtitle mb-2 text-muted">{{book.author_name}}</h6>
+              <div class="star">
+                <app-star-rating [maxRating]="5" [currentRating]="book.star"></app-star-rating>
+              </div>
+              <p class="card-text"><strong>Price:</strong> Rs. {{book.price}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addtoCart(book)">
+                    <i class="bi bi-cart"></i> Add to Cart
+                  </button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+        <img src="../../assets/images/BOOKNOOOK.png" class="bi me-2 pr-3" width="170" height="32" alt="logo" aria-label="Bootstrap">
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a routerLink="/homepage" class="nav-link px-2 link-body-emphasis">Homepage</a></li>
+        <li><a routerLink="/books" class="nav-link px-2 link-body-emphasis">Books</a></li>
+        <li><a routerLink="/orders" class="nav-link px-2 link-body-emphasis">Orders</a></li>
+        <li><a routerLink="/cart" class="nav-link px-2 link-body-emphasis">Cart</a></li>
+      </ul>
+
+
+      <p *ngIf="user.first_name!=''" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none" >{{user.first_name}}&nbsp;&nbsp;</p>
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="../../assets/images/person-circle (2).svg" height="32" weight="32">
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li><a *ngIf="user.first_name!=''" class="dropdown-item" (click)="signOut()">Sign out</a></li>
+          <li><a *ngIf="user.first_name==''" class="dropdown-item" routerLink="/login">Login</a></li>
+          <li><a *ngIf="user.first_name=='admin'" class="dropdown-item" routerLink="/admin">Admin Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<br>

@@ -1,0 +1,94 @@
+<!-- <div>
+  <hr />
+  <hr />
+</div>
+<div>
+  <div *ngFor="let book of Books" class="product-container">
+    <div class="image-container">
+      <img src="../../assets/images/{{book.title}}.jpg" alt="image" />
+    </div>
+
+    <div class="name-container"></div>
+    <div class="details"><b>Title:</b>{{book.title}}</div>
+    <div class="details"><b>Genre:</b>{{book.genre}}</div>
+    <div class="details"><b>Price:</b>{{book.price}}</div>
+    <div class="details"><b>Author: </b>{{book.author_name}}</div>
+    <div class="options">
+      <button class="btn btn-warning" (click)="openDiagloagbox()">Update</button>
+      <span>&nbsp;</span>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+  <button class="btn btn-secondary col-12">Add Book</button>
+  <hr/>
+</div> -->
+<hr>
+<hr>
+<div  class="main-container" style="background-color: rgb(49, 43, 43);">
+  <div class="product-container" *ngFor="let book of Books" class="product-container">
+      <div class="image-container"><img src="../../assets/images/{{book.title}}.jpg" alt="image"></div>
+
+          <div class="name-container"></div>
+          <div class="details"><b>Title:</b>{{book.title}}</div>
+          <div class="details"><b>Genre:</b>{{book.genre}}</div>
+          <div class="details"><b>Price:</b>{{book.price}}</div>
+          <div class="details"><b>Author: </b>{{book.author_name}}</div>
+          <div class="options">
+          <button [hidden]="!hiddenform" class="btn btn-warning" (click)="hideall()">Update</button>
+          <button [hidden]="!hiddenform" class="btn btn-danger" (click)="deleteBook(book.book_id)">Delete</button>
+
+          <form [hidden]="hiddenform" (ngSubmit)="updateBook(book.book_id);hideall()" [formGroup]="bookupdate">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text"  id="Book" formControlName="title" name="title" value="{{book.title}}">
+            </div>
+            <div class="form-group">
+                <label for="author_name">Author_name:</label>
+                <input type="text"  id="author_name" formControlName="author_name"  name="author_name" value="{{book.author_name}}">
+            </div>
+            <div class="form-group">
+              <label for="author_name">Genre:</label>
+              <input type="text"  id="Genre" formControlName="genre"  name="genre" value="{{book.genre}}">
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text"  id="price" formControlName="price"  name="price" value="{{book.price}}">
+            </div>
+            <!-- <div class="form-group">
+                <label for="formFileMultiple" class="form-label">Upload Book </label>
+                <input class="form-control"  type="file" name="file" id="formFileMultiple">
+              </div> -->
+           <button type="submit" class="btn btn-warning col-6">Update</button>
+        </form>
+        <button [hidden]="hiddenform" class="btn btn-danger col-6"  (click)="hideall()">Cancel</button>
+    </div>
+
+  </div>
+  <hr/>
+  <button class="btn btn-secondary col-12" [hidden]="!hideadd" (click)="hide()">Add Book</button>
+
+  <form [hidden]="hideadd" (ngSubmit)="print1();hide();addBook()" [formGroup]="addbook">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text"  id="Book" formControlName="title" name="title" >
+    </div>
+    <div class="form-group">
+        <label for="author_name">Author_name:</label>
+        <input type="text"  id="author_name" formControlName="author_name"  name="author_name" >
+    </div>
+    <div class="form-group">
+      <label for="author_name">Genre:</label>
+      <input type="text"  id="Genre" formControlName="genre"  name="genre" >
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="text"  id="price" formControlName="price"  name="price" >
+    </div>
+    <!-- <div class="form-group">
+        <label for="formFileMultiple" class="form-label">Upload Book </label>
+        <input class="form-control"  type="file" name="file" id="formFileMultiple">
+      </div> -->
+   <button type="submit" class="btn btn-warning col-12">Add Book</button>
+</form>
+<button [hidden]="hideadd" class="btn btn-danger col-12"  (click)="hide()">Cancel</button>
+<hr/>

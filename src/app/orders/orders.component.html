@@ -1,0 +1,21 @@
+<div class="container d-flex justify-content-center align-items-center py-5">
+
+<table class="table table-bordered table-dark container">
+  <thead>
+    <tr>
+      <th scope="col">Order Date</th>
+      <th scope="col">Number of Books</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Total(Incl. taxes)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <th *ngIf="user.customer_id==order.customers.customer_id" scope="row">{{order.order_date | date:"MMM dd, yyyy 'at' hh:mm a" }}</th>
+      <td *ngIf="user.customer_id==order.customers.customer_id">{{order.totalcount}}</td>
+      <td *ngIf="user.customer_id==order.customers.customer_id">{{order.totalprice|currency:'INR'}}</td>
+      <td *ngIf="user.customer_id==order.customers.customer_id">{{order.totalprice | currency:'INR'}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

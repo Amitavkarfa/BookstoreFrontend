@@ -1,0 +1,68 @@
+<div class="px-4 py-5 my-5 text-center">
+
+</div>
+
+<section class="pb-5 mb-3">
+  <div class="form-box pb-5">
+      <div class="form-value">
+
+          <form (ngSubmit)="registerNow()" [formGroup]="form" novalidate>
+              <h2>Sign Up !</h2>
+              <div class="inputbox">
+                <input type="text" required  name="first_name" formControlName="first_name" >
+                <label for="">First Name</label>
+              </div>
+              <div *ngIf="f['first_name'].touched && f['first_name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['first_name'].errors && f['first_name'].errors['required']">FIrst Name is required.</div>
+                <div *ngIf="f['first_name'].errors && f['first_name'].errors['minlength']">FIrst Name  must be 2 characters long</div>
+              </div>
+              <div class="inputbox">
+                <input type="text" required  name="last_name" formControlName="last_name">
+                <label for="">Last Name</label>
+              </div>
+              <div *ngIf="f['last_name'].touched && f['last_name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['last_name'].errors && f['last_name'].errors['required']">Last Name is required.</div>
+                <div *ngIf="f['last_name'].errors && f['last_name'].errors['minlength']">Last Name must be 2 characters long</div>
+              </div>
+              <div class="inputbox">
+                  <input type="email" required  name="email" formControlName="email">
+                  <label for="">Email</label>
+              </div>
+              <div *ngIf="emailerror!=null" class="alert alert-danger">
+                <div>{{emailerror}}</div>
+              </div>
+              <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                <div *ngIf="f['email'].errors && f['email'].errors['required']">Email can't be empty</div>
+                <div *ngIf="f['email'].errors && f['email'].errors['email']">Enter a valid Email</div>
+              </div>
+              <div class="inputbox">
+                  <input type="password" required  name="password" formControlName="password">
+                  <label for="">Password</label>
+              </div>
+              <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                <div *ngIf="f['password'].errors && f['password'].errors['required']">Password can't be empty</div>
+                <div *ngIf="f['password'].errors && f['password'].errors['minlength']">Password must be 8 characters long </div>
+              </div>
+              <div class="inputbox">
+                <input type="tel" required name="phone_number" formControlName="phone_number">
+                <label for="">Phone Number</label>
+              </div>
+              <div *ngIf="f['phone_number'].touched && f['phone_number'].invalid" class="alert alert-danger">
+                <div *ngIf="f['phone_number'].errors && f['phone_number'].errors['required']">Phone Number can't be empty</div>
+                <div *ngIf="f['phone_number'].errors && f['phone_number'].errors['pattern']">Enter a valid Phone Number</div>
+              </div>
+              <div class="inputbox">
+                <input type="text" required  name="address" formControlName="address">
+                <label for="">Address</label>
+              </div>
+              <div *ngIf="f['address'].touched && f['address'].invalid" class="alert alert-danger">
+                <div *ngIf="f['address'].errors && f['address'].errors['required']">Address can't be empty</div>
+              </div>
+              <button style="color: black;">Sign Up</button>
+              <div class="register">
+                  <p>Already have a account ? <a routerLink="/login">Login</a></p>
+              </div>
+          </form>
+      </div>
+  </div>
+</section>

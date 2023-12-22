@@ -1,0 +1,104 @@
+<div class="py-5">
+<section class=" h-custom" >
+  <div class="container py-5 ">
+    <div class="row d-flex justify-content-center align-items-center ">
+      <div class="col">
+        <div class="card">
+          <div class="card-body p-4">
+
+            <div class="row">
+
+              <div class="col-lg-7">
+                <h5 class="mb-3"><a routerLink="/books" class="text-body">Continue shopping
+                  <i class="bi bi-arrow-right-short"></i>
+                </a></h5>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+                    <p class="mb-1">Shopping cart</p>
+                    <p class="mb-0">You have {{cart.items.length}} items in your cart</p>
+                  </div>
+                </div>
+
+                <div class="card mb-3" *ngFor="let cartItem of cart.items">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex flex-row align-items-center">
+                        <div>
+                          <img
+                            src="../../assets/images/{{cartItem.book.title}}.jpg"
+                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                        </div>
+                        <div class="ms-3">
+                          <h5>{{cartItem.book.title}}</h5>
+                          <p class="small mb-0">{{cartItem.book.author_name}}</p>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center">
+                        <div style="width: 50px;">
+                          <select #quantitySelect
+                          [value]="cartItem.quantity"
+                          (change)="changeQuantity(cartItem,quantitySelect.value)" class="fw-normal mb-0">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                        <div style="width: 80px;">
+                          <h5 class="mb-0">{{cartItem.price | currency:'INR'}}</h5>
+                        </div>
+                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                      </div>
+                      <button type="button" (click)="removeFromCart(cartItem)" class="btn btn-info btn-block btn-lg">
+                        <div class="d-flex flex-row align-items-center pl-5">
+                          <span><i class="bi bi-trash-fill"></i></span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+              <div class="col-lg-5 pt-5 mt-1">
+
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Subtotal</p>
+                      <p class="mb-2">{{cart.totalprice | currency:'INR'}}</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Number of Books</p>
+                      <p class="mb-2">{{cart.totalcount}}</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-4">
+                      <p class="mb-2">Total(Incl. taxes)</p>
+                      <p class="mb-2">{{cart.totalprice | currency:'INR'}}</p>
+                    </div>
+
+                    <div *ngIf="this.user.first_name==''" class="alert alert-danger col-7" role="alert">
+                      Sign in to place your order. <a routerLink="/login" class="alert-link">Sign in</a>
+                    </div>
+
+                    <button type="button" [disabled]="this.user.first_name==''" (click)="orderfinal()" class="btn btn-info btn-block btn-lg">
+                      <div class="d-flex justify-content-between">
+                        <span>{{cart.totalprice | currency:'INR'}}</span>
+                        <span>&nbsp;&nbsp;Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                      </div>
+                    </button>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+</section>
+</div>

@@ -1,0 +1,25 @@
+.col:hover{
+  transform: translateY(-5px);
+}
+@keyframes blinkColorChange {
+  0% { color: rgb(255, 242, 242); }
+  50% { color: rgb(255, 0, 0); } /* Change this color to your desired blinking color */
+  100% { color: rgb(255, 242, 242); }
+}
+
+.blinking {
+  animation: blinkColorChange 2s infinite; /* Adjust the animation duration as needed */
+}
+@keyframes colorChangeAnimation {
+  0% { color: #fff; background-color: #000; }
+  50% { color: #00ff2a; background-color: #000; } /* Change this color to your desired blinking color */
+  100% { color: #fff; background-color: #000; }
+}
+
+.color-changing {
+  animation: colorChangeAnimation 2s infinite; /* Adjust the animation duration as needed */
+   padding-left: 70px;
+   padding-right: 70px;
+   font-size:large;
+
+}
